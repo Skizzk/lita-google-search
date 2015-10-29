@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-google_search"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Zaratan"]
   spec.email         = ["denis.pasin@gmail.com"]
   spec.description   = "A lita plugin to do all the type of google search"

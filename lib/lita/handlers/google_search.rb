@@ -4,7 +4,7 @@ module Lita
   module Handlers
     class GoogleSearch < Handler
       # insert handler code here
-      route(/g(oogle)?\s+(?<me>me\s+)?(?<terms>.*)/, :google_search, command: true, help:{
+      route(/^g(oogle)?\s+(?<me>me\s+)?(?<terms>.*)/, :google_search, command: true, help:{
         "google smthg" => "google search something (alias g smthg)",
         "google me smthg" => "google search something and reply privately (alias g me smthg)",
       })
@@ -13,7 +13,7 @@ module Lita
         print_search(r, Google::Search::Web)
       end
       
-      route(/(image|img)\s+(?<me>me\s+)?(?<terms>.*)/, :image_search, command: true, help:{
+      route(/^(image|img)\s+(?<me>me\s+)?(?<terms>.*)/, :image_search, command: true, help:{
         "image smthg" => "google image search something (alias img smthg)",
         "image me smthg" => "google image search something and reply privately (alias img me smthg)",
       })
@@ -22,7 +22,7 @@ module Lita
         print_search(r, Google::Search::Image)
       end
 
-      route(/(yt|youtube)\s+(?<me>me\s+)?(?<terms>.*)/, :youtube_search, command: true, help: {
+      route(/^(yt|youtube)\s+(?<me>me\s+)?(?<terms>.*)/, :youtube_search, command: true, help: {
         "youtube smthg" => "youtube image search something (alias yt smthg)",
         "youtube me smthg" => "youtube search something and reply privately (alias yt me smthg)",
       })
