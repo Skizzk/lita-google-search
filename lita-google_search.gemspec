@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-google_search"
-  spec.version       = "0.1.1"
+  spec.version       = "0.1.2"
   spec.authors       = ["Zaratan"]
   spec.email         = ["denis.pasin@gmail.com"]
   spec.description   = "A lita plugin to do all the type of google search"
@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "google-search"
+  spec.add_dependency "htmlentities"
 
   spec.add_runtime_dependency "lita", ">= 4.6"
 

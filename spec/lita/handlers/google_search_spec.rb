@@ -30,6 +30,15 @@ describe Lita::Handlers::GoogleSearch, lita_handler: true do
       send_command("g me test", as: user)
       expect(replies.last).to match(/\S+/)
     end
+
+    it "should unparse special html char" do
+      allow_any_instance_of(Google::Search::Web).to receive(:first).and_return(double("result", title: "lol&#39;d", uri: "", content: "onoes &#39;ll"))
+      subject
+      expect(replies.last).not_to include("&#39;")
+      expect(replies.last).to include("'")
+      expect(replies.last(2).first).not_to include("&#39;")
+      expect(replies.last(2).first).to include("'")
+    end
   end
 
   describe "image" do

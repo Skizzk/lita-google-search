@@ -1,4 +1,5 @@
 require 'google-search'
+require 'htmlentities'
 
 module Lita
   module Handlers
@@ -34,9 +35,10 @@ module Lita
       private
 
       def print_search(r, clazz)
+        htmlentities = HTMLEntities.new
         result = clazz.new(:query => r.match_data[:terms]).first
-        r.send(answering_method(r), "#{r.user.name}: #{result.title.gsub(/<[^>]*>/,"").gsub(/\s\s+/," ")} ( #{result.uri} )")
-        r.send(answering_method(r), result.content.gsub(/<[^>]*>/,"").gsub(/\s\s+/," "))
+        r.send(answering_method(r), "#{r.user.name}: #{htmlentities.decode(result.title).gsub(/<[^>]*>/,"").gsub(/\s\s+/," ")} ( #{result.uri} )")
+        r.send(answering_method(r), htmlentities.decode(result.content).gsub(/<[^>]*>/,"").gsub(/\s\s+/," "))
       end
 
       def answering_method(r)
